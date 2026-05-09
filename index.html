@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Movie List</title>
+</head>
+<body>
+    <div class="layout-container">
+        <header class="hero">
+            <div class="hero-text">
+                <h1>Find your film</h1>
+                <a href="watchlist.html" class="watchlist-btn">
+                    <h2>My watchlist</h2>
+                </a>
+            </div>
+            <section class="search-section">
+                <input type="search" placeholder="Search for movies..." aria-label="Search" id="search-input">
+                <button type="button" id="search-button">Search</button>
+            </section>
+        </header>
+        <main class="movie-list" id="movie-list">
+                <!-- Movie cards will be rendered here -->
+            <div id="start-screen">
+                <img src="imgs/start.png" alt="start" class="start-image">
+            </div>
+        </main>
+    </div>
+</body>
+<script src="index.js" type="module"></script>
+</html>

@@ -1,0 +1,290 @@
+/* --- CSS VARIABLES --- */
+:root {
+    /* Colors */
+    --bg-main: #0E0E0E;
+    --bg-card: #1a1a1a;
+    --bg-search: #2E2E2F;
+    --bg-button: #4B4B4B;
+    --bg-button-hover: #5C5C5C;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --text-muted: #9CA3AF;
+    
+    /* Shadows & Borders */
+    --shadow-default: 0 4px 10px rgba(0,0,0,0.5);
+    --radius-sm: 4px;
+    --radius-md: 8px;
+}
+
+/* --- BASE STYLES & RESET --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+}
+
+button {
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+    border: none;
+}
+
+/* --- LAYOUT --- */
+.layout-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 4em 1em;
+    margin-bottom: 3rem; /* Make room for the overlapping search bar */
+    background-image: url('/imgs/hero.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat:repeat;
+    text-align: center;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+.hero-text h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+.hero-text h2 {
+    font-size: 1.25rem;
+}
+
+
+/* Search Layout */
+.search-section {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1; 
+    top: 30px;
+    transform: translateY(3.5rem); /* Overlap the hero section edge */
+}
+
+.search-section input {
+    padding: 0.8rem;
+    padding-left: 40px; /* Space for the search icon */
+    font-size: 1rem;
+    background-color: #2E2E2F;
+    background-image: url('/imgs/search-icon.png');
+    background-position: 12px center;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    color: #9CA3AF;
+    /* top-left, top-right, bottom-right, bottom-left */
+    border-radius: 4px 0 0 4px;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.search-section input:focus {
+    background-color: #383839;
+    box-shadow: inset 0 0 0 1px #5C5C5C;
+}
+.search-icon {
+  color: #888;
+  font-size: 1.2rem;
+}
+
+.search-section button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background-color: #4B4B4B;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.search-section button:hover {
+    background-color: #5C5C5C;
+}
+.search-section button:active {
+    transform: scale(0.98);
+}
+
+/* Movie List Grid */
+.movie-list {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 column default for mobile */
+    gap: 2rem;
+    padding: 1em;
+}
+
+.movie-card {
+    display: flex;
+    flex-direction: row; /* Horizontal on mobile */
+    background-color: #1a1a1a; /* Lighter shade to stand out against body */
+    color: #ffffff;
+    padding: 1.5em;
+    gap: 1rem; /* Space between poster and text */
+    align-items: flex-start;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.movie-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+}
+.poster {
+  width: 100px; /* Smaller poster for mobile */
+  border-radius: 4px; /* Subtle rounding as per senior standards */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1; /* Takes up remaining horizontal space */
+  min-width: 0; /* Prevents flex overflow */
+}
+
+/* Title and Rating alignment */
+.title-row {
+  display: flex;
+  flex-wrap: wrap; /* Let title and rating wrap if needed */
+  align-items: center;
+  gap: 8px;
+}
+
+.title-row h1 {
+  margin: 0;
+  font-size: 1.25rem; /* Smaller font on mobile */
+  font-weight: 600;
+}
+
+.rating {
+  font-size: 0.85rem;
+  color: #b3b3b3;
+}
+
+/* Metadata Row */
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  color:#ffffff;
+  font-size: 0.85rem; /* Smaller on mobile */
+}
+
+.description {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #a5a5a5;
+}
+
+/* The Watchlist Button as an Inline-Block element */
+.watchlist-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  padding: 5px 10px;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  text-decoration: none; 
+}
+.watchlist-btn:hover {
+  opacity: 0.8;
+}
+.watchlist-btn:active {
+  transform: scale(0.95);
+}
+
+#start-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Adjust as needed */
+    visibility: visible; /* Hide by default, show when no movies are displayed */
+}
+#start-screen .start-image {
+    width: 200px; /* Adjust as needed */
+    opacity: 0.8;
+}
+
+/* Responsive Breakpoints */
+@media (min-width: 768px) {
+    .hero-text {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+    }
+    .movie-list {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .movie-card {
+        gap: 24px;
+    }
+    .poster {
+        width: 150px;
+    }
+    .title-row h1 {
+        font-size: 1.5rem;
+    }
+    .meta-row {
+        gap: 20px;
+        font-size: 0.95rem;
+    }
+    #start-screen {
+        grid-column: span 2; /* Center the start screen across all columns */
+    }
+     #start-screen .start-image {
+        width: 200px;   
+    }
+}
+
+@media (min-width: 1024px) {
+    .movie-list {
+        padding: 2rem 5vw;
+        grid-template-columns: repeat(4, 1fr); 
+    }
+    .movie-card{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .title-row, .meta-row {
+        justify-content: center;
+    }
+    #start-screen {
+        grid-column: span 4; /* Center the start screen across all columns */
+    }
+     #start-screen .start-image {
+        width: 200px;   
+    }
+}
