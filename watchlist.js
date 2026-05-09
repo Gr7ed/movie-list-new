@@ -1,5 +1,10 @@
 const watchlistContainer = document.getElementById('watchlist-container');
 
+// Only run watchlist functionality if on watchlist page
+if (!watchlistContainer) {
+  throw new Error('Watchlist container not found. Make sure this script runs on watchlist.html');
+}
+
 function renderWatchlist() {
     const watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
     
